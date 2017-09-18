@@ -69,17 +69,31 @@ Exchanges the current values of the `ACC` and `BAK` registers.
 Copies the current value of `ACC` to `BAK`.
 
 #### Arithmetic Operations
+For all arithmetic operations, note that arithmetic over- or underflows are clamped, i.e. there is no over- or underflow. The value will merely cap out at the end of the range of valid values.
+
 `ADD <SRC>`
-Reads a value from the specified target `SRC` and adds it to the current value of `ACC`, then writes the result of the operation back to `ACC`. Note that arithmetic over- or underflows are clamped, i.e. there is no over- or underflow. The value will merely cap out at the end of the range of valid values.
+Reads a value from the specified target `SRC` and adds it to the current value of `ACC`, then writes the result of the operation back to `ACC`.
 Example:
 `ADD 1` Adds one to the current value of `ACC`.
 `ADD LEFT` Reads a value from the left port, then adds it to `ACC`.
 
 `SUB <SRC>`
-Reads a value from the specified target `SRC` and subtracts it from the current value of `ACC`, then writes the result of the operation back to `ACC`. Note that arithmetic over- or underflows are clamped, i.e. there is no over- or underflow. The value will merely cap out at the end of the range of valid values.
+Reads a value from the specified target `SRC` and subtracts it from the current value of `ACC`, then writes the result of the operation back to `ACC`.
 Example:
-`SUB 1` Subtracts one to the current value of `ACC`.
+`SUB 1` Subtracts one from the current value of `ACC`.
 `SUB LEFT` Reads a value from the left port, then subtracts it from `ACC`.
+
+`MUL <SRC>`
+Reads a value from the specified target `SRC` and multiplies it by the current value of `ACC`, then writes the result of the operation back to `ACC`.
+Example:
+`MUL 2` Multiplies the current value of `ACC` by two.
+`MUL LEFT` Reads a value from the left port, then multiplies it by `ACC`.
+
+`DIV <SRC>`
+Reads a value from the specified target `SRC` and divides the current value of `ACC` by it, then writes the result of the operation back to `ACC`.
+Example:
+`DIV 2` Divides the current value of `ACC` by two.
+`DIV LEFT` Reads a value from the left port, then divides it by `ACC`.
 
 `NEG`
 Negates the current value of `ACC` and stores the result in `ACC`.
